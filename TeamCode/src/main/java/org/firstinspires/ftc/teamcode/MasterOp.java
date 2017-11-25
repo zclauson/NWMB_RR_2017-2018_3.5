@@ -131,6 +131,8 @@ motor1  |_______________________________| motor2
         motor2.setPower(0);
         motor3.setPower(0);
         motor4.setPower(0);
+        motor5.setPower(0);
+        motor7.setPower(0);
     }
 
     public void resetEncoders() {
@@ -139,8 +141,17 @@ motor1  |_______________________________| motor2
         motor3.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motor4.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
+    public void run_using_encoders(){
+        motor1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motor2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motor3.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motor4.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motor5.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motor7.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    }
 
     public void PowerForB(double motorspeed, int motorcount) {
+        run_using_encoders();
         motor1.setPower(motorspeed);
         motor2.setPower(motorspeed);
         motor3.setPower(motorspeed);
@@ -148,6 +159,7 @@ motor1  |_______________________________| motor2
         if (Math.abs(motor1.getCurrentPosition()) > motorcount) {
             shutdownAllMotors();
             resetEncoders();
+            v_state++;
         }
 
     }
@@ -163,6 +175,7 @@ motor1  |_______________________________| motor2
         servo2.setPosition(Set);
     }
     public void Arm(int count){
+        run_using_encoders();
         motor7.setPower(.2);
         if (motor7.getCurrentPosition() > count){
             resetEncoders();
@@ -170,6 +183,7 @@ motor1  |_______________________________| motor2
         }
     }
     public void PowerR(double motorspeed, int motorcount) {
+        run_using_encoders();
         motor1.setPower(motorspeed);
         motor2.setPower(-motorspeed);
         motor3.setPower(-motorspeed);
@@ -182,6 +196,7 @@ motor1  |_______________________________| motor2
     }
 
     public void PowerL(double motorspeed, int motorcount) {
+        run_using_encoders();
         motor1.setPower(-motorspeed);
         motor2.setPower(motorspeed);
         motor3.setPower(motorspeed);

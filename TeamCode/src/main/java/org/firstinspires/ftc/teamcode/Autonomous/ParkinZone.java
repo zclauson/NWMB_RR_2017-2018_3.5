@@ -18,6 +18,7 @@ public class ParkinZone extends OpMode {
 
     @Override
     public void loop(){
+        telemetry.update();
         telemetry.addData("V-state: " ,mo.v_state);
         telemetry.addData("blue: ", mo.color1.blue());
         telemetry.addData("red: ",mo.color1.red());
@@ -35,15 +36,10 @@ public class ParkinZone extends OpMode {
              }
              break;
          case 2:
-             mo.motor1.setPower(1);
-             mo.motor2.setPower(1);
-             mo.motor3.setPower(1);
-             mo.motor4.setPower(1);
-             if (getRuntime() ==5){
-                 mo.shutdownAllMotors();
-             }
+             mo.PowerForB(1,200);
              break;
          case 3:
+             mo.run_using_encoders();
              mo.motor5.setPower(-.2);
              if (mo.motor5.getCurrentPosition() > 200){
                  mo.shutdownAllMotors();
@@ -53,6 +49,7 @@ public class ParkinZone extends OpMode {
 
              break;
          case 4:
+             mo.run_using_encoders();
              mo.motor1.setPower(.5);
              mo.motor2.setPower(-.5);
              mo.motor3.setPower(.5);
@@ -64,6 +61,7 @@ public class ParkinZone extends OpMode {
              }
              break;
          case 5:
+             mo.run_using_encoders();
              mo.motor5.setPower(-.3);
              if (Math.abs(mo.motor5.getCurrentPosition()) < 20){
                  mo.servo1.setPosition(1);
@@ -76,6 +74,7 @@ public class ParkinZone extends OpMode {
          default:
 
             break;
+
          }
     }
 }

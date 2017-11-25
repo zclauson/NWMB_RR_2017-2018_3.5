@@ -21,6 +21,7 @@ public class LinearDriveFor extends LinearOpMode {
 //        mo.servo1.setPosition(.5);
         mo.PowerForB(1,2000);
         sleep(2000);
+        telemetry.update();
 
     }
 }

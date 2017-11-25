@@ -23,7 +23,8 @@ public class MecanumManual1 extends OpMode {
 
     @Override
     public void loop() {
-
+        telemetry.update();
+        mo.run_using_encoders();
         /*
         Code Created by Maddie, FTC Team 4962, The Rockettes
 
@@ -108,7 +109,7 @@ public class MecanumManual1 extends OpMode {
         }
 
 
-        telemetry.update();
+
         telemetry.addData("red: ",mo.color1.red());
         telemetry.addData("blue: ",mo.color1.blue());
         telemetry.addData("motor1: ", BL);

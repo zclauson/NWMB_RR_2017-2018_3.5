@@ -28,7 +28,8 @@ public class blue1Linear extends LinearOpMode {
         mo.ColorSensorBlue();
         sleep(2000);
         mo.PowerForB(1,2000);
-        sleep(2000);
+        sleep(1000);
+
 
 
 
