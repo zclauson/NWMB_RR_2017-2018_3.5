@@ -40,6 +40,7 @@ public class Blue1 extends OpMode{
             case 2:
                 mo.run_using_encoders();
                 mo.motor7.setPower(.2);
+                //this means whether the motor goes 200 impulses or blue is detected or red is detected
                 if (mo.motor7.getCurrentPosition() > 200||mo.color1.blue() > 0 || mo.color1.red() > 0){
                     mo.shutdownAllMotors();
                     mo.resetEncoders();
@@ -52,7 +53,7 @@ public class Blue1 extends OpMode{
                     } else if (mo.color1.red() > 0) {
                         mo.PowerForB(1, 200);
                     }
-                
+
                 break;
 
 
