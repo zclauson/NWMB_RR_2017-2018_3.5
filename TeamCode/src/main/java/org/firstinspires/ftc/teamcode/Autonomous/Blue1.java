@@ -49,12 +49,33 @@ public class Blue1 extends OpMode{
                 break;
             case 3:
                     if (mo.color1.blue() > 0) {
-                        mo.PowerForB(-1, 200);
+                        mo.blueDetected=true;
+                        mo.run_using_encoders();
+                        mo.PowerForB(-1, 10);
                     } else if (mo.color1.red() > 0) {
-                        mo.PowerForB(1, 200);
+                        mo.blueDetected=false;
+                        mo.run_using_encoders();
+                        mo.PowerForB(1, 10);
                     }
 
                 break;
+            case 4:
+                mo.run_using_encoders();
+                mo.motor7.setPower(-.2);
+                if (mo.motor7.getCurrentPosition()>200){
+                    mo.shutdownAllMotors();
+                    mo.resetEncoders();
+                    mo.v_state++;
+                }
+            case 5:
+                mo.run_using_encoders();
+                if (mo.blueDetected){
+                    mo.PowerForB(1,400);
+                }
+                else if(!mo.blueDetected) {
+                    mo.PowerForB(1, 50);
+                }
+
 
 
 
@@ -66,6 +87,7 @@ public class Blue1 extends OpMode{
         telemetry.addData("blue: ", mo.color1.blue());
         telemetry.addData("red: ",mo.color1.red());
         telemetry.addData("runtime: ", getRuntime());
+        telemetry.addData("blueDetected: ",mo.blueDetected);
 
     }
 }
