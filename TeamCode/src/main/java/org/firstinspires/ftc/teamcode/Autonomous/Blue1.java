@@ -40,19 +40,19 @@ public class Blue1 extends OpMode{
             case 2:
                 mo.run_using_encoders();
                 mo.motor7.setPower(.2);
-                if (mo.motor7.getCurrentPosition() > 500){
+                if (mo.motor7.getCurrentPosition() > 200||mo.color1.blue() > 0 || mo.color1.red() > 0){
                     mo.shutdownAllMotors();
                     mo.resetEncoders();
                     mo.v_state++;
                 }
                 break;
             case 3:
-                if (mo.color1.blue() > 0){
-                    mo.PowerForB(-1 , 200);
-                }
-                else if (mo.color1.red() > 0){
-                    mo.PowerForB(1 , 200);
-                }
+                    if (mo.color1.blue() > 0) {
+                        mo.PowerForB(-1, 200);
+                    } else if (mo.color1.red() > 0) {
+                        mo.PowerForB(1, 200);
+                    }
+                
                 break;
 
 
