@@ -29,6 +29,7 @@ public class Red1 extends OpMode {
             case 1:
                 mo.servo2.setPosition(.40);
                 if (mo.servo2.getPosition() < .41 && mo.servo2.getPosition() > .39) {
+
                     mo.v_state++;
                 }
 
@@ -48,7 +49,7 @@ public class Red1 extends OpMode {
                 if (mo.color1.red() > 0) {
                     mo.redDetected = true;
                     mo.run_using_encoders();
-                    mo.PowerForB(1, 10);
+                    mo.PowerForB(-1, 100);
                 } else if (mo.color1.blue() > 0) {
                     mo.redDetected = false;
                     mo.run_using_encoders();
