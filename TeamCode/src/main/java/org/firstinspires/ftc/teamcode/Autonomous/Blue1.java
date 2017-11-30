@@ -41,7 +41,7 @@ public class Blue1 extends OpMode{
                 mo.run_using_encoders();
                 mo.motor7.setPower(.2);
                 //this means whether the motor goes 200 impulses or blue is detected or red is detected
-                if (mo.motor7.getCurrentPosition() > 200||mo.color1.blue() > 0 || mo.color1.red() > 0){
+                if (mo.motor7.getCurrentPosition() > 450||mo.color1.blue() > 0 || mo.color1.red() > 0){
                     mo.shutdownAllMotors();
                     mo.resetEncoders();
                     mo.v_state++;
@@ -51,18 +51,18 @@ public class Blue1 extends OpMode{
                     if (mo.color1.blue() > 0) {
                         mo.blueDetected=true;
                         mo.run_using_encoders();
-                        mo.PowerForB(-1, 10);
+                        mo.PowerForB(-1, 100);
                     } else if (mo.color1.red() > 0) {
                         mo.blueDetected=false;
                         mo.run_using_encoders();
-                        mo.PowerForB(1, 10);
+                        mo.PowerForB(1,100);
                     }
 
                 break;
             case 4:
                 mo.run_using_encoders();
                 mo.motor7.setPower(-.2);
-                if (mo.motor7.getCurrentPosition()>200){
+                if (mo.motor7.getCurrentPosition() < -700){
                     mo.shutdownAllMotors();
                     mo.resetEncoders();
                     mo.v_state++;
@@ -70,10 +70,10 @@ public class Blue1 extends OpMode{
             case 5:
                 mo.run_using_encoders();
                 if (mo.blueDetected){
-                    mo.PowerForB(1,400);
+                    mo.PowerForB(1,600);
                 }
                 else if(!mo.blueDetected) {
-                    mo.PowerForB(1, 50);
+                    mo.PowerForB(1, 200);
                 }
 
 
@@ -88,6 +88,7 @@ public class Blue1 extends OpMode{
         telemetry.addData("red: ",mo.color1.red());
         telemetry.addData("runtime: ", getRuntime());
         telemetry.addData("blueDetected: ",mo.blueDetected);
+        telemetry.addData("motor1: ", mo.motor1.getCurrentPosition());
 
     }
 }
