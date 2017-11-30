@@ -30,6 +30,8 @@ public class MasterOp {
 
     public int v_state=0;
     public boolean blueDetected;
+    public boolean redDetected;
+
 
     public HardwareMap HM = null;
 
@@ -157,7 +159,7 @@ motor1  |_______________________________| motor2
         motor2.setPower(motorspeed);
         motor3.setPower(motorspeed);
         motor4.setPower(motorspeed);
-        if (Math.abs(motor1.getCurrentPosition()) > motorcount) {
+        if (Math.abs(motor3.getCurrentPosition()) > motorcount) {
             shutdownAllMotors();
             resetEncoders();
             v_state++;
