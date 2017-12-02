@@ -7,7 +7,7 @@ import org.firstinspires.ftc.teamcode.MasterOp;
 /**
  * Created by Zachary Clauson on 10/28/2017.
  */
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "ZCBlue1", group = "ZCBlue1")
+@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "Blue1", group = "Blue1")
 //@Disabled
 public class Blue1 extends OpMode{
     MasterOp mo = new MasterOp();
@@ -75,6 +75,12 @@ public class Blue1 extends OpMode{
                 else if(!mo.blueDetected) {
                     mo.PowerForB(1, 200);
                 }
+                break;
+            case 6:
+                mo.run_using_encoders();
+                mo.zeroTurnRorL(1,300);
+                break;
+
 
 
 

@@ -116,11 +116,11 @@ motor1  |_______________________________| motor2
         motor7.setPower(0);
         motor7.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        //servo1=claw
+        //servo1=leftClaw
         servo1 = HM.servo.get("servo1");
         servo1.setPosition(.5);
 
-        //servo2= colorSensorArm
+//        servo2= rightClaw
         servo2 = HM.servo.get("servo2");
         servo2.setPosition(1);
 
@@ -191,7 +191,7 @@ motor1  |_______________________________| motor2
         motor2.setPower(-motorspeed);
         motor3.setPower(-motorspeed);
         motor4.setPower(motorspeed);
-        if (motor1.getCurrentPosition() > motorcount) {
+        if (motor3.getCurrentPosition() > motorcount) {
             shutdownAllMotors();
             resetEncoders();
             v_state++;
@@ -204,11 +204,23 @@ motor1  |_______________________________| motor2
         motor2.setPower(motorspeed);
         motor3.setPower(motorspeed);
         motor4.setPower(-motorspeed);
-        if (motor1.getCurrentPosition() > motorcount) {
+        if (motor3.getCurrentPosition() > motorcount) {
             shutdownAllMotors();
             resetEncoders();
             v_state++;
 
+        }
+    }
+    public void zeroTurnRorL(double motorspeed, int motorcount){
+        run_using_encoders();
+        motor1.setPower(-motorspeed);
+        motor2.setPower(motorspeed);
+        motor3.setPower(-motorspeed);
+        motor4.setPower(motorspeed);
+        if (Math.abs(motor3.getCurrentPosition())> motorcount){
+            shutdownAllMotors();
+            resetEncoders();
+            v_state++;
         }
     }
 }
