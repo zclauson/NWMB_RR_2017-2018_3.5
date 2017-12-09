@@ -55,13 +55,7 @@ motor1  |_______________________________| motor2
 
 
 
-    public void AddMotor(DcMotor m, String motorname) {
-        //method for adding motor
-        m = HM.dcMotor.get(motorname);
-        m.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        m.setPower(0);
-        m.setDirection(DcMotorSimple.Direction.FORWARD);
-    }
+
 
     public void init(HardwareMap hm) {
         /*this is saying the Hardware map, made at the top equals any new hardware map
@@ -106,12 +100,7 @@ motor1  |_______________________________| motor2
         motor5.setPower(0);
         motor5.setDirection(DcMotorSimple.Direction.FORWARD);
 
-        //motor6 = topArm
-//        AddMotor(motor6,"motor6");
-//        motor6 = HM.dcMotor.get("motor6");
-//        motor6.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-//        motor6.setPower(0);
-//        motor6.setDirection(DcMotorSimple.Direction.REVERSE);
+
 
         //motor7 = sensorArm
         motor7 = HM.dcMotor.get("motor7");
