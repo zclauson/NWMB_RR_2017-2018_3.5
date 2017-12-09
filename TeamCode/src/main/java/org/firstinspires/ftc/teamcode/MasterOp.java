@@ -36,6 +36,9 @@ public class MasterOp {
     public HardwareMap HM = null;
 
     /*
+    robot goes 5.43 inches every 280 impulses
+
+
                         Front
 motor3   _______________________________  motor4
         |                               |
@@ -114,7 +117,7 @@ motor1  |_______________________________| motor2
         motor7 = HM.dcMotor.get("motor7");
         motor7.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motor7.setPower(0);
-        motor7.setDirection(DcMotorSimple.Direction.REVERSE);
+        motor7.setDirection(DcMotorSimple.Direction.FORWARD);
 
         //servo1=leftClaw
         servo1 = HM.servo.get("servo1");
@@ -122,7 +125,7 @@ motor1  |_______________________________| motor2
 
 //        servo2= rightClaw
         servo2 = HM.servo.get("servo2");
-        servo2.setPosition(1);
+        servo2.setPosition(.5);
 
         //color1 = colorSensor
         color1 = HM.colorSensor.get("color1");
@@ -223,4 +226,8 @@ motor1  |_______________________________| motor2
             v_state++;
         }
     }
+
+
+
+
 }

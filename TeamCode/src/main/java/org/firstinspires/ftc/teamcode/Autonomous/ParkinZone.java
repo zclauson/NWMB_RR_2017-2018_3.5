@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Autonomous;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.util.Hardware;
 
@@ -9,6 +10,7 @@ import org.firstinspires.ftc.teamcode.MasterOp;
  * Created by Zachary Clauson on 10/21/2017.
  */
 @com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "ParkinZone", group = "ParkinZone")
+@Disabled
 public class ParkinZone extends OpMode {
     MasterOp mo = new MasterOp();
     @Override

@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.MasterOp;
@@ -9,6 +10,7 @@ import org.firstinspires.ftc.teamcode.MasterOp;
  * Created by Zachary Clauson on 11/11/2017.
  */
 @Autonomous(name = "LinearDriveFor", group = "LinearDriveFor")
+@Disabled
 public class LinearDriveFor extends LinearOpMode {
 
     MasterOp mo =new MasterOp();

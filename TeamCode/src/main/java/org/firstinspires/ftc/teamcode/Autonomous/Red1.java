@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Autonomous;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.MasterOp;
@@ -7,6 +8,7 @@ import org.firstinspires.ftc.teamcode.MasterOp;
 /**
  * Created by Anneliese on 11/25/2017.
  */
+@Autonomous(name = "Red1", group = "Red1")
 public class Red1 extends OpMode {
     MasterOp mo = new MasterOp();
 

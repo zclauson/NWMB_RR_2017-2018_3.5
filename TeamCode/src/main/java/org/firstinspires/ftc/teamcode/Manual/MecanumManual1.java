@@ -72,11 +72,11 @@ public class MecanumManual1 extends OpMode {
 
         if (gamepad2.a){
             mo.servo1.setPosition(1);
-            mo.servo2.setPosition(1);
+            mo.servo2.setPosition(-1);
         }
         if (gamepad2.b){
             mo.servo1.setPosition(.50);
-            mo.servo2.setPosition(.50);
+            mo.servo2.setPosition(.45);
         }
 
         telemetry.addData("red: ",mo.color1.red());
