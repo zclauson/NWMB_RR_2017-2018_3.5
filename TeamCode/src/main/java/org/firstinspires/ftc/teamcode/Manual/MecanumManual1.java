@@ -52,6 +52,7 @@ public class MecanumManual1 extends OpMode {
         float g1RightY= gamepad1.right_stick_y;
 
         float armpower = -gamepad2.right_stick_y;
+        float colorarm = gamepad2.left_stick_y;
         // I switched the plus and minus signs for g1RightX
         float  FL= -g1LeftY - g1RightX -g1RightY;
         float  BR=  g1LeftY - g1RightX -g1RightY;
@@ -69,6 +70,7 @@ public class MecanumManual1 extends OpMode {
         mo.motor3.setPower(FL);
         mo.motor4.setPower(FR);
         mo.motor5.setPower(armpower);
+        mo.motor7.setPower(colorarm);
 
         if (gamepad2.a){
             mo.servo1.setPosition(1);
@@ -88,6 +90,7 @@ public class MecanumManual1 extends OpMode {
         telemetry.addData("leftClaw: ", mo.servo1.getPosition());
         telemetry.addData("rightClaw: ", mo.servo2.getPosition());
         telemetry.addData("armMotor: ", mo.motor5.getCurrentPosition());
+        telemetry.addData("colorArm: ", mo.motor7.getCurrentPosition());
 
 
 

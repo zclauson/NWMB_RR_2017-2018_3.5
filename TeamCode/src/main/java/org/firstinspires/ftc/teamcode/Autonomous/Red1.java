@@ -40,6 +40,7 @@ public class Red1 extends OpMode {
             case 2:
                 mo.run_using_encoders();
                 mo.motor7.setPower(.2);
+
                 if (mo.motor7.getCurrentPosition() > 200 || mo.color1.blue() > 0 || mo.color1.red() > 0) {
                     mo.resetEncoders();
                     mo.shutdownAllMotors();

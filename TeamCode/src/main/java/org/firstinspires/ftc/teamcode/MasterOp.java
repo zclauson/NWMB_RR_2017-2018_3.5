@@ -20,7 +20,6 @@ public class MasterOp {
     public DcMotor motor3 = null;
     public DcMotor motor4 = null;
     public DcMotor motor5 = null;
-//    public DcMotor motor6 = null;
     public DcMotor motor7 = null;
 
     public Servo servo1 = null;
@@ -52,17 +51,6 @@ motor1  |_______________________________| motor2
 
     */
 
-
-
-
-    public void AddMotor(DcMotor m, String motorname) {
-        //method for adding motor
-        m = HM.dcMotor.get(motorname);
-        m.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        m.setPower(0);
-        m.setDirection(DcMotorSimple.Direction.FORWARD);
-    }
-
     public void init(HardwareMap hm) {
         /*this is saying the Hardware map, made at the top equals any new hardware map
          entered*/
@@ -80,38 +68,27 @@ motor1  |_______________________________| motor2
         motor1.setDirection(DcMotorSimple.Direction.REVERSE);
 
         //motor2 = rightRear
-//        AddMotor(motor2,"motor2");
         motor2 = HM.dcMotor.get("motor2");
         motor2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motor2.setPower(0);
         motor2.setDirection(DcMotorSimple.Direction.FORWARD);
 
         //motor3 = leftFront
-//        AddMotor(motor3,"motor3");
         motor3 = HM.dcMotor.get("motor3");
         motor3.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motor3.setPower(0);
         motor3.setDirection(DcMotorSimple.Direction.REVERSE);
 
         //motor4 = rightFront
-//        AddMotor(motor4,"motor4");
         motor4 = HM.dcMotor.get("motor4");
         motor4.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motor4.setPower(0);
         motor4.setDirection(DcMotorSimple.Direction.FORWARD);
 //       motor5= bottomArm
-//      AddMotor(motor5,"motor5");
         motor5 = HM.dcMotor.get("motor5");
         motor5.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motor5.setPower(0);
         motor5.setDirection(DcMotorSimple.Direction.FORWARD);
-
-        //motor6 = topArm
-//        AddMotor(motor6,"motor6");
-//        motor6 = HM.dcMotor.get("motor6");
-//        motor6.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-//        motor6.setPower(0);
-//        motor6.setDirection(DcMotorSimple.Direction.REVERSE);
 
         //motor7 = sensorArm
         motor7 = HM.dcMotor.get("motor7");
@@ -146,6 +123,9 @@ motor1  |_______________________________| motor2
         motor2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motor3.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motor4.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motor5.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motor7.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
     }
     public void run_using_encoders(){
         motor1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -188,7 +168,7 @@ motor1  |_______________________________| motor2
             shutdownAllMotors();
         }
     }
-    public void PowerR(double motorspeed, int motorcount) {
+    public void PowerL(double motorspeed, int motorcount) {
         run_using_encoders();
         motor1.setPower(motorspeed);
         motor2.setPower(-motorspeed);
@@ -201,7 +181,7 @@ motor1  |_______________________________| motor2
         }
     }
 
-    public void PowerL(double motorspeed, int motorcount) {
+    public void PowerR(double motorspeed, int motorcount) {
         run_using_encoders();
         motor1.setPower(-motorspeed);
         motor2.setPower(motorspeed);
