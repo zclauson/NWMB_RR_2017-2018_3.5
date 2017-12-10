@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.MasterOp;
 /**
  * Created by Anneliese on 11/25/2017.
  */
-@Autonomous(name = "Red1", group = "Red1")
+@Autonomous(name = "Red1_Ken", group = "Red1_Ken")
 public class Red1 extends OpMode {
     MasterOp mo = new MasterOp();
 

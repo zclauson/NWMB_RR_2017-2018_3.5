@@ -7,7 +7,7 @@ import org.firstinspires.ftc.teamcode.MasterOp;
 /**
  * Created by Zachary Clauson on 10/28/2017.
  */
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "Blue1", group = "Blue1")
+@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "Blue1_Ken", group = "Blue1_Ken")
 //@Disabled
 public class Blue1 extends OpMode{
     MasterOp mo = new MasterOp();
