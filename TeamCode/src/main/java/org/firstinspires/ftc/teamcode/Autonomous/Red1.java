@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.MasterOp;
 /**
  * Created by Anneliese on 11/25/2017.
  */
-@Autonomous(name = "Red1_Ken", group = "Red1_Ken")
+@Autonomous(name = "Red1", group = "Red1_Ken")
 public class Red1 extends OpMode {
     MasterOp mo = new MasterOp();
 
@@ -27,28 +27,17 @@ public class Red1 extends OpMode {
                 mo.shutdownAllMotors();
 
                 break;
-
             case 1:
-                mo.servo2.setPosition(.40);
-                if (mo.servo2.getPosition() < .41 && mo.servo2.getPosition() > .39) {
-
-                    mo.v_state++;
-                }
-
-                break;
-
-            case 2:
                 mo.run_using_encoders();
                 mo.motor7.setPower(.2);
-
-                if (mo.motor7.getCurrentPosition() > 200 || mo.color1.blue() > 0 || mo.color1.red() > 0) {
+                if (mo.motor7.getCurrentPosition() > 450 || mo.color1.blue() > 0 || mo.color1.red() > 0) {
                     mo.resetEncoders();
                     mo.shutdownAllMotors();
                     mo.v_state++;
                 }
                 break;
 
-            case 3:
+            case 2:
                 if (mo.color1.red() > 0) {
                     mo.redDetected = true;
                     mo.run_using_encoders();
@@ -56,24 +45,33 @@ public class Red1 extends OpMode {
                 } else if (mo.color1.blue() > 0) {
                     mo.redDetected = false;
                     mo.run_using_encoders();
+                    mo.PowerForB(1, 100);
                 }
                 break;
 
-            case 4:
+            case 3:
                 mo.run_using_encoders();
                 mo.motor7.setPower(-.2);
-                if (mo.motor7.getCurrentPosition() > 200) {
+                if (mo.motor7.getCurrentPosition() < -300) {
                     mo.shutdownAllMotors();
                     mo.resetEncoders();
                     mo.v_state++;
                 }
-            case 5:
+            case 4:
                 mo.run_using_encoders();
                 if (mo.redDetected) {
-                    mo.PowerForB(1, 50);
+                    mo.PowerForB(-1, 600);
                 } else if (!mo.redDetected) {
-                    mo.PowerForB(1, 50);
+                    mo.PowerForB(1,200);
                 }
+                break;
+            case 5:
+                mo.run_using_encoders();
+                mo.zeroTurnRorL(1,300);
+
+                break;
+
+
 
             default:
 

@@ -7,7 +7,7 @@ import org.firstinspires.ftc.teamcode.MasterOp;
 /**
  * Created by Zachary Clauson on 10/28/2017.
  */
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "Blue1_Ken", group = "Blue1_Ken")
+@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "Blue1", group = "Blue1")
 //@Disabled
 public class Blue1 extends OpMode{
     MasterOp mo = new MasterOp();
@@ -19,10 +19,6 @@ public class Blue1 extends OpMode{
 
     @Override
     public void loop() {
-//        if (getRuntime()==30){
-//            mo.shutdownAllMotors();
-//            mo.v_state=0;
-//        }
 
         switch (mo.v_state){
             case 0:
@@ -56,7 +52,7 @@ public class Blue1 extends OpMode{
             case 3:
                 mo.run_using_encoders();
                 mo.motor7.setPower(-.2);
-                if (mo.motor7.getCurrentPosition() < -700){
+                if (mo.motor7.getCurrentPosition() < -300){
                     mo.shutdownAllMotors();
                     mo.resetEncoders();
                     mo.v_state++;

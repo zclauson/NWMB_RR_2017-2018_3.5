@@ -32,7 +32,7 @@ public class Blue2 extends OpMode {
             case 1:
                 mo.run_using_encoders();
                 mo.motor7.setPower(.1);
-                if (mo.motor7.getCurrentPosition() > 400 || mo.color1.blue() > 0 || mo.color1.red() > 0){
+                if (mo.motor7.getCurrentPosition() > 450 || mo.color1.blue() > 0 || mo.color1.red() > 0){
                     mo.shutdownAllMotors();
                     mo.resetEncoders();
                     mo.v_state++;

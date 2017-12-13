@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.MasterOp;
 /**
  * Created by Anneliese on 12/10/2017.
  */
-@Autonomous(name = "Red1_Ken", group = "Red1_Ken")
+@Autonomous(name = "Red2", group = "Red2")
 public class Red2 extends OpMode {
 
     MasterOp mo = new MasterOp();
@@ -27,7 +27,7 @@ public class Red2 extends OpMode {
             case 0:
                 mo.resetEncoders();
                 mo.shutdownAllMotors();
-                mo.v_state=1;
+                mo.v_state++;
                 break;
             //  Break statement
             //  Terminates the loop or switch statement and transfers execution to the statement immediately following the loop or switch.
@@ -37,11 +37,10 @@ public class Red2 extends OpMode {
                 //  The bar lowers and stops when it has traveled ## impulses or sees either the red or blue ball.
                 mo.run_using_encoders();
                 mo.motor7.setPower(.2);
-                if (mo.motor7.getCurrentPosition() > 200 || mo.color1.blue() > 0 || mo.color1.red() > 0)
-                {
+                if (mo.motor7.getCurrentPosition() > 450 || mo.color1.blue() > 0 || mo.color1.red() > 0) {
                     mo.resetEncoders();
                     mo.shutdownAllMotors();
-                    mo.v_state=2;
+                    mo.v_state++;
                 }
                 break;
 
@@ -49,19 +48,13 @@ public class Red2 extends OpMode {
                 //  This code determines which color the sensor detects.
                 //  If the color red is detected, then the robot moves backwards at power of 1 for 100 impulses.
                 //  If the color blue is detected, then the robot moves forwards at power of 1 for 100 impulses
-                if (mo.color1.red() > 0)
-                {
+                if (mo.color1.red() > 0){
                     mo.redDetected = true;
-                    mo.run_using_encoders();
                     mo.PowerForB(-1, 100);
                 }
-                else
-                if (mo.color1.blue() > 0)
-                {
+                else if (mo.color1.blue() > 0) {
                     mo.redDetected = false;
-                    mo.run_using_encoders();
                     mo.PowerForB(1, 100);
-                    mo.v_state=3;
                 }
                 break;
 
@@ -69,11 +62,10 @@ public class Red2 extends OpMode {
                 //  This code raises and returns the color sensor bar back to its original position
                 mo.run_using_encoders();
                 mo.motor7.setPower(-.2);
-                if (mo.motor7.getCurrentPosition() < 1)
-                {
+                if (mo.motor7.getCurrentPosition() < -300) {
                     mo.shutdownAllMotors();
                     mo.resetEncoders();
-                    mo.v_state=4;
+                    mo.v_state++;
                 }
                 break;
 
@@ -83,27 +75,35 @@ public class Red2 extends OpMode {
                 // around point.  If blue ball detected (false) then robot needs to move BACKWARDS a greater distance to reach
                 // the turn around point.
                 mo.run_using_encoders();
-                if (mo.redDetected)       // Red Ball
-                {
-                    mo.PowerForB(-1,400);
-                } else if (!mo.redDetected) // Blue Ball
-                {
+                if (mo.redDetected){       // Red Ball{
+                    mo.PowerForB(-1,800);
+                }
+                else if (!mo.redDetected){ // Blue Ball
+
                     mo.PowerForB(-1,500);
                 }
 
                 break;
-
             case 5:
+                mo.run_using_encoders();
+                mo.zeroTurnRorL(-1,2600);
+                break;
+            case 6:
                 // This code calls the 90 degree turn.  The robot needs to turn counter clock wise so the front of the robot is face the glyph
                 // holder
                 mo.run_using_encoders();
-                mo.zeroTurnRorL(1,600);
+                mo.PowerL(1,400);
                 break;
 
-            case 6:
+            case 7:
                 // This code moves the robot and glyph towards the glyph holder with the intention of putting the glyph into the center column.
                 mo.run_using_encoders();
-                mo.PowerForB(1,300);
+                if (mo.redDetected){
+                    mo.PowerForB(1,400);
+                }
+                else if (!mo.redDetected){
+                    mo.PowerForB(1,600);
+                }
 
                 break;
 
