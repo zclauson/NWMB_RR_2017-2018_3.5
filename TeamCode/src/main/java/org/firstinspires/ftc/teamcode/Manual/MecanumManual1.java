@@ -77,7 +77,7 @@ public class MecanumManual1 extends OpMode {
             mo.servo2.setPosition(-.9);
         }
         if (gamepad2.b){
-            mo.servo1.setPosition(.30);
+            mo.servo1.setPosition(.25);
             mo.servo2.setPosition(.50 );
         }
 

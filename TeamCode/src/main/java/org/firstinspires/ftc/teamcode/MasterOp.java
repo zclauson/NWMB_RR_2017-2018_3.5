@@ -98,11 +98,11 @@ motor1  |_______________________________| motor2
 
         //servo1=leftClaw
         servo1 = HM.servo.get("servo1");
-        servo1.setPosition(.5);
+        servo1.setPosition(.30);
 
 //        servo2= rightClaw
         servo2 = HM.servo.get("servo2");
-        servo2.setPosition(.5);
+        servo2.setPosition(.50);
 
         //color1 = colorSensor
         color1 = HM.colorSensor.get("color1");
