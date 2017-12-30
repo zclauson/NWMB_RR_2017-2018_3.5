@@ -106,7 +106,7 @@ public class MecanumManual2 extends OpMode {
             mo.servo2.setPosition(1);
         }
         if (gamepad1.a){
-            mo.resetEncoders();
+            mo.color1.enableLed(false);
         }
         if(gamepad2.dpad_down){
             mo.motor5.setPower(-.4);

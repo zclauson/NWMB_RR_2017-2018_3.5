@@ -25,11 +25,12 @@ public class Red1 extends OpMode {
             case 0:
                 mo.resetEncoders();
                 mo.shutdownAllMotors();
+                mo.v_state++;
 
                 break;
             case 1:
                 mo.run_using_encoders();
-                mo.motor7.setPower(.2);
+                mo.motor7.setPower(.1);
                 if (mo.motor7.getCurrentPosition() > 450 || mo.color1.blue() > 0 || mo.color1.red() > 0) {
                     mo.resetEncoders();
                     mo.shutdownAllMotors();
@@ -42,10 +43,11 @@ public class Red1 extends OpMode {
                     mo.redDetected = true;
                     mo.run_using_encoders();
                     mo.PowerForB(-1, 100);
-                } else if (mo.color1.blue() > 0) {
-                    mo.redDetected = false;
-                    mo.run_using_encoders();
-                    mo.PowerForB(1, 100);
+                } else
+                    if (mo.color1.blue() > 0) {
+                        mo.redDetected = false;
+                        mo.run_using_encoders();
+                        mo.PowerForB(1, 50);
                 }
                 break;
 
@@ -57,18 +59,28 @@ public class Red1 extends OpMode {
                     mo.resetEncoders();
                     mo.v_state++;
                 }
+                break;
             case 4:
                 mo.run_using_encoders();
                 if (mo.redDetected) {
                     mo.PowerForB(-1, 600);
                 } else if (!mo.redDetected) {
-                    mo.PowerForB(1,200);
+                    mo.PowerForB(-1,1700);
                 }
                 break;
             case 5:
+                if (!mo.redDetected) {
+                    mo.run_using_encoders();
+                    mo.zeroTurnRorL(1, 1200);
+                }
+                else if (mo.redDetected){
+                    mo.run_using_encoders();
+                    mo.zeroTurnRorL(1,1400);
+                }
+                break;
+            case 6:
                 mo.run_using_encoders();
-                mo.zeroTurnRorL(1,300);
-
+                mo.PowerForB(1,100);
                 break;
 
 
@@ -82,7 +94,7 @@ public class Red1 extends OpMode {
             telemetry.addData("blue: ", mo.color1.blue());
             telemetry.addData("red: ", mo.color1.red());
             telemetry.addData("runtime: ", getRuntime());
-            telemetry.addData("blueDetected: ", mo.blueDetected);
+            telemetry.addData("blueDetected: ", mo.redDetected);
         }
     }
 

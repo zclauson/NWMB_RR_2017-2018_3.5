@@ -28,8 +28,10 @@ public class MasterOp {
     public ColorSensor color1 = null;
 
     public int v_state=0;
+    public int time=0;
     public boolean blueDetected;
     public boolean redDetected;
+
 
 
     public HardwareMap HM = null;

@@ -48,6 +48,12 @@ public class Blue2 extends OpMode {
                     mo.run_using_encoders();
                     mo.PowerForB(1,100);
                 }
+                else if (mo.time < 12){
+                    mo.v_state++;
+                }
+                else{
+                    mo.time++;
+                }
 
                 break;
             case 3:

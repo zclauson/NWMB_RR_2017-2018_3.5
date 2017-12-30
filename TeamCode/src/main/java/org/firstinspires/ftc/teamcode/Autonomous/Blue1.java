@@ -29,7 +29,7 @@ public class Blue1 extends OpMode{
 
             case 1:
                 mo.run_using_encoders();
-                mo.motor7.setPower(.2);
+                mo.motor7.setPower(.1);
                 //this means whether the motor goes 200 impulses or blue is detected or red is detected
                 if (mo.motor7.getCurrentPosition() > 450||mo.color1.blue() > 0 || mo.color1.red() > 0){
                     mo.shutdownAllMotors();
@@ -41,11 +41,11 @@ public class Blue1 extends OpMode{
                     if (mo.color1.blue() > 0) {
                         mo.blueDetected=true;
                         mo.run_using_encoders();
-                        mo.PowerForB(-1, 100);
+                        mo.PowerForB(-.5, 100);
                     } else if (mo.color1.red() > 0) {
                         mo.blueDetected=false;
                         mo.run_using_encoders();
-                        mo.PowerForB(1,100);
+                        mo.PowerForB(.5,100);
                     }
 
                 break;
@@ -57,19 +57,29 @@ public class Blue1 extends OpMode{
                     mo.resetEncoders();
                     mo.v_state++;
                 }
+                break;
             case 4:
                 mo.run_using_encoders();
                 if (mo.blueDetected){
-                    mo.PowerForB(1,600);
+                    mo.PowerForB(.5,1700);
                 }
                 else if(!mo.blueDetected) {
-                    mo.PowerForB(1, 200);
+                    mo.PowerForB(.5, 700);
                 }
                 break;
             case 5:
-                mo.run_using_encoders();
-                mo.zeroTurnRorL(1,300);
+                if (mo.blueDetected){
+                    mo.run_using_encoders();
+                    mo.zeroTurnRorL(.5,1200);
+                }
+                else if (!mo.blueDetected){
+                    mo.run_using_encoders();
+                    mo.zeroTurnRorL(.5,1100);
+                }
                 break;
+            case 6:
+                mo.run_using_encoders();
+                mo.PowerForB(.5,350);
 
 
 

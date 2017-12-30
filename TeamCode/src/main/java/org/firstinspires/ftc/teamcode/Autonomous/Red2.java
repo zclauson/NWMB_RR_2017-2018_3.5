@@ -36,7 +36,7 @@ public class Red2 extends OpMode {
                 //  This section of code lowers the color senor arm between the red and blue balls.
                 //  The bar lowers and stops when it has traveled ## impulses or sees either the red or blue ball.
                 mo.run_using_encoders();
-                mo.motor7.setPower(.2);
+                mo.motor7.setPower(.1);
                 if (mo.motor7.getCurrentPosition() > 450 || mo.color1.blue() > 0 || mo.color1.red() > 0) {
                     mo.resetEncoders();
                     mo.shutdownAllMotors();
