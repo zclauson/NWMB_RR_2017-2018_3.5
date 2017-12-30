@@ -7,9 +7,9 @@ import org.firstinspires.ftc.teamcode.MasterOp;
 /**
  * Created by Zachary Clauson on 10/28/2017.
  */
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "Blue1", group = "Blue1")
+@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "Blue1_AC", group = "Blue1_AC")
 //@Disabled
-public class Blue1 extends OpMode{
+public class Blue1_AC extends OpMode{
     MasterOp mo = new MasterOp();
     @Override
     public void init() {
@@ -20,7 +20,7 @@ public class Blue1 extends OpMode{
     @Override
     public void loop() {
 
-        switch (mo.v_state){
+        switch (mo.v_state) {
             case 0:
                 mo.resetEncoders();
                 mo.shutdownAllMotors();
@@ -31,63 +31,61 @@ public class Blue1 extends OpMode{
                 mo.run_using_encoders();
                 mo.motor7.setPower(.1);
                 //this means whether the motor goes 200 impulses or blue is detected or red is detected
-                if (mo.motor7.getCurrentPosition() > 450||mo.color1.blue() > 0 || mo.color1.red() > 0){
+                if (mo.motor7.getCurrentPosition() > 450 || mo.color1.blue() > 0 || mo.color1.red() > 0) {
                     mo.shutdownAllMotors();
                     mo.resetEncoders();
                     mo.v_state++;
                 }
                 break;
             case 2:
-                    if (mo.color1.blue() > 0) {
-                        mo.blueDetected=true;
-                        mo.run_using_encoders();
-                        mo.PowerForB(-.5, 100);
-                    } else if (mo.color1.red() > 0) {
-                        mo.blueDetected=false;
-                        mo.run_using_encoders();
-                        mo.PowerForB(.5,100);
-                    }
+                if (mo.color1.blue() > 0) {
+                    mo.blueDetected = true;
+                    mo.run_using_encoders();
+                    mo.PowerForB(-.5, 100);
+                } else if (mo.color1.red() > 0) {
+                    mo.blueDetected = false;
+                    mo.run_using_encoders();
+                    mo.PowerForB(.5, 100);
+                } else {
+                    mo.v_state++;
+                }
 
                 break;
             case 3:
                 mo.run_using_encoders();
-                mo.motor7.setPower(-.2);
-                if (mo.motor7.getCurrentPosition() < -300){
-                    mo.shutdownAllMotors();
-                    mo.resetEncoders();
-                    mo.v_state++;
-                }
-                break;
+                mo.motor7.setPower(-.1);
+                if (mo.motor7.getCurrentPosition() < -300) {
+                        mo.shutdownAllMotors();
+                        mo.resetEncoders();
+                        mo.v_state++;
+                    }
+                    break;
             case 4:
                 mo.run_using_encoders();
-                if (mo.blueDetected){
-                    mo.PowerForB(.5,1700);
-                }
-                else if(!mo.blueDetected) {
+                if (mo.blueDetected) {
+                    mo.PowerForB(.5, 1700);
+                } else if (!mo.blueDetected) {
                     mo.PowerForB(.5, 700);
-                }
-                break;
+                        }
+                        break;
             case 5:
-                if (mo.blueDetected){
+                if (mo.blueDetected) {
                     mo.run_using_encoders();
-                    mo.zeroTurnRorL(.5,1200);
-                }
-                else if (!mo.blueDetected){
+                    mo.zeroTurnL(.5, 1200);
+                } else if (!mo.blueDetected) {
                     mo.run_using_encoders();
-                    mo.zeroTurnRorL(.5,1100);
+                    mo.zeroTurnL(.5, 1100);
                 }
                 break;
             case 6:
                 mo.run_using_encoders();
-                mo.PowerForB(.5,350);
-
-
-
-
+                mo.PowerForB(.5, 350);
+                break;
 
             default:
 
                 break;
+
         }
         telemetry.addData("V-state: " ,mo.v_state);
         telemetry.addData("blue: ", mo.color1.blue());
