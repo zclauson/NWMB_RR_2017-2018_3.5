@@ -31,7 +31,7 @@ public class Red1 extends OpMode {
             case 1:
                 mo.run_using_encoders();
                 mo.motor7.setPower(.1);
-                if (mo.motor7.getCurrentPosition() > 450 || mo.color1.blue() > 0 || mo.color1.red() > 0) {
+                if ( mo.color1.blue() > 0 || mo.color1.red() > 0||mo.motor7.getCurrentPosition() > 450) {
                     mo.resetEncoders();
                     mo.shutdownAllMotors();
                     mo.v_state++;
@@ -42,12 +42,16 @@ public class Red1 extends OpMode {
                 if (mo.color1.red() > 0) {
                     mo.redDetected = true;
                     mo.run_using_encoders();
-                    mo.PowerForB(-1, 100);
-                } else
-                    if (mo.color1.blue() > 0) {
-                        mo.redDetected = false;
-                        mo.run_using_encoders();
-                        mo.PowerForB(1, 50);
+                    mo.PowerForB(-.5, 100);
+                } else if (mo.color1.blue() > 0) {
+                    mo.redDetected = false;
+                    mo.run_using_encoders();
+                    mo.PowerForB(.5, 25);
+                } else if(mo.time > 300){
+                    mo.v_state++;
+                }
+                else{
+                    mo.time++;
                 }
                 break;
 
@@ -63,24 +67,24 @@ public class Red1 extends OpMode {
             case 4:
                 mo.run_using_encoders();
                 if (mo.redDetected) {
-                    mo.PowerForB(-1, 600);
+                    mo.PowerForB(-.5, 600);
                 } else if (!mo.redDetected) {
-                    mo.PowerForB(-1,1700);
+                    mo.PowerForB(-.5,1900);
                 }
                 break;
             case 5:
                 if (!mo.redDetected) {
                     mo.run_using_encoders();
-                    mo.zeroTurnRorL(1, 1200);
+                    mo.zeroTurnRorL(.5, 1200);
                 }
                 else if (mo.redDetected){
                     mo.run_using_encoders();
-                    mo.zeroTurnRorL(1,1400);
+                    mo.zeroTurnRorL(.5,1400);
                 }
                 break;
             case 6:
                 mo.run_using_encoders();
-                mo.PowerForB(1,100);
+                mo.PowerForB(.5,500);
                 break;
 
 

@@ -32,7 +32,7 @@ public class Blue2 extends OpMode {
             case 1:
                 mo.run_using_encoders();
                 mo.motor7.setPower(.1);
-                if (mo.motor7.getCurrentPosition() > 450 || mo.color1.blue() > 0 || mo.color1.red() > 0){
+                if ( mo.color1.blue() > 0 || mo.color1.red() > 0 ||mo.motor7.getCurrentPosition() > 450){
                     mo.shutdownAllMotors();
                     mo.resetEncoders();
                     mo.v_state++;
@@ -42,11 +42,11 @@ public class Blue2 extends OpMode {
                 if (mo.color1.blue() > 0) {
                     mo.blueDetected=true;
                     mo.run_using_encoders();
-                    mo.PowerForB(-1, 100);
+                    mo.PowerForB(-.5, 100);
                 } else if (mo.color1.red() > 0) {
                     mo.blueDetected=false;
                     mo.run_using_encoders();
-                    mo.PowerForB(1,100);
+                    mo.PowerForB(.5,100);
                 }
                 else if (mo.time < 12){
                     mo.v_state++;
@@ -68,21 +68,21 @@ public class Blue2 extends OpMode {
             case 4:
                 mo.run_using_encoders();
                 if (mo.blueDetected){
-                    mo.PowerForB(1,1000);
+                    mo.PowerForB(.5,1000);
                 }
                 else if(!mo.blueDetected) {
-                    mo.PowerForB(1, 500);
+                    mo.PowerForB(.5, 500);
                 }
 
 
                 break;
             case 5:
                 mo.run_using_encoders();
-                mo.PowerR(1,300);
+                mo.PowerR(.5,300);
                 break;
             case 6:
                 mo.run_using_encoders();
-                mo.PowerForB(1,200);
+                mo.PowerForB(.5,200);
                 break;
 
 
