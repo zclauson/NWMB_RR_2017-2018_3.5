@@ -196,7 +196,19 @@ motor1  |_______________________________| motor2
 
         }
     }
-    public void zeroTurnRorL(double motorspeed, int motorcount){
+    public void zeroTurnR(double motorspeed, int motorcount){
+        run_using_encoders();
+        motor1.setPower(motorspeed);
+        motor2.setPower(-motorspeed);
+        motor3.setPower(motorspeed);
+        motor4.setPower(-motorspeed);
+        if (Math.abs(motor3.getCurrentPosition())> motorcount){
+            shutdownAllMotors();
+            resetEncoders();
+            v_state++;
+        }
+    }
+    public void zeroTurnL(double motorspeed, int motorcount){
         run_using_encoders();
         motor1.setPower(-motorspeed);
         motor2.setPower(motorspeed);
