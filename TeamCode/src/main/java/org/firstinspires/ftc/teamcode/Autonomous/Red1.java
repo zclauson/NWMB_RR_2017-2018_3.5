@@ -75,11 +75,11 @@ public class Red1 extends OpMode {
             case 5:
                 if (!mo.redDetected) {
                     mo.run_using_encoders();
-                    mo.zeroTurnRorL(.5, 1200);
+                    mo.zeroTurnR(.5, 1200);
                 }
                 else if (mo.redDetected){
                     mo.run_using_encoders();
-                    mo.zeroTurnRorL(.5,1400);
+                    mo.zeroTurnR(.5,1400);
                 }
                 break;
             case 6:

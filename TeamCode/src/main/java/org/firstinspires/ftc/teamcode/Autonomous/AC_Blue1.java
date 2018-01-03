@@ -1,15 +1,13 @@
 package org.firstinspires.ftc.teamcode.Autonomous;
 
-import com.qualcomm.robotcore.eventloop.opmode.*;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.MasterOp;
 
 /**
- * Created by Zachary Clauson on 10/28/2017.
+ * Created by Anneliese on 1/1/2018.
  */
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "Blue1", group = "Blue1")
-//@Disabled
-public class Blue1 extends OpMode{
+public class AC_Blue1 extends OpMode {
     MasterOp mo = new MasterOp();
     @Override
     public void init() {
@@ -38,19 +36,19 @@ public class Blue1 extends OpMode{
                 }
                 break;
             case 2:
-                    if (mo.color1.blue() > 0) {
-                        mo.blueDetected=true;
-                        mo.run_using_encoders();
-                        mo.PowerForB(-.5, 100);
-                    } else if (mo.color1.red() > 0) {
-                        mo.blueDetected=false;
-                        mo.run_using_encoders();
-                        mo.PowerForB(.5,100);
-                    } else if (mo.time <120){
-                        mo.v_state++;
-                    } else{
-                        mo.time++;
-                    }
+                if (mo.color1.blue() > 0) {
+                    mo.blueDetected=true;
+                    mo.run_using_encoders();
+                    mo.PowerForB(-.5, 100);
+                } else if (mo.color1.red() > 0) {
+                    mo.blueDetected=false;
+                    mo.run_using_encoders();
+                    mo.PowerForB(.5,100);
+                } else if (mo.time <120){
+                    mo.v_state++;
+                } else{
+                    mo.time++;
+                }
 
                 break;
             case 3:
@@ -74,11 +72,11 @@ public class Blue1 extends OpMode{
             case 5:
                 if (mo.blueDetected){
                     mo.run_using_encoders();
-                    mo.zeroTurnRorL(.5,1200);
+                    mo.zeroTurnL(.5,1200);
                 }
                 else if (!mo.blueDetected){
                     mo.run_using_encoders();
-                    mo.zeroTurnRorL(.5,1100);
+                    mo.zeroTurnL(.5,1100);
                 }
                 break;
             case 6:
@@ -101,4 +99,11 @@ public class Blue1 extends OpMode{
         telemetry.addData("motor1: ", mo.motor1.getCurrentPosition());
 
     }
+
+
+
+
+
+
+
 }

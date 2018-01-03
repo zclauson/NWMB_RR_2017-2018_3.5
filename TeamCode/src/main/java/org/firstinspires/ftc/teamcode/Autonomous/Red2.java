@@ -86,7 +86,7 @@ public class Red2 extends OpMode {
                 break;
             case 5:
                 mo.run_using_encoders();
-                mo.zeroTurnRorL(-.5,2600);
+                mo.zeroTurnR(-.5,2600);
                 break;
             case 6:
                 // This code calls the 90 degree turn.  The robot needs to turn counter clock wise so the front of the robot is face the glyph
